@@ -14,28 +14,70 @@
 
 var ctx = document.getElementById("myChart");
 
+function topX(x){
+  tempData = JSON.parse(JSON.stringify(data));
+  //tempData = data;
+  titles = [];
+  indicies = [];
+  maxes = [];
+  for(i=0; i < x; i++){
+    rowMaxes = []; //100, 201, 60
+    rowIndicies = []; //0 2 0 - index for the actual number
+    for(j=0; j < dalen; j++){
+      tempArray = tempData[j];
+      maxInSet = Math.max.apply(Math, tempData[j]);
+      rowMaxes.push(maxInSet);
+
+      inSetIndex = tempArray.indexOf(maxInSet);
+      rowIndicies.push(inSetIndex)
+      //document.write(maxInSet + " " + index + "<br>");
+    }
+    //document.write(rowMaxes + " " + rowIndicies + "<br>");
+    max = Math.max.apply(Math, rowMaxes); //201
+    
+    translatingIndex = rowMaxes.indexOf(max); //1 //index of which dataset
+    index = rowIndicies[translatingIndex]; //2
+    doseNum = dose[translatingIndex];
+    document.write(doseNum);
+    
+    roi = labels[index];
+    titles.push(doseNum + " gy " + roi);
+    maxes.push(max);
+
+    identifySet = tempData[translatingIndex];
+    identifySet[index] = max * -1;
+
+  }
+  //document.write(titles)
+  //plottedData = maxes;
+  return titles;
+}
 //variables that will be dynamic later - need to be in this format/data structure for code to work as is.
-
-labels = ["Cord", "Esophagus", "External", "Heart", "PTV", "R_Lung", "R_Lung"];
-data = [[100, 19, 34, 100]];
-//data = [[100, 19, 34, 100],[200, 140, 201], [60,30,4,5]];
-
+dose = [5.0, 10.0, 15.0, 20.0];
+labels = ["Cord", "Esophagus", "External", "Heart", "Lt_Lung", "PTV", "R_Lung", "Total_Lung_-_gtv"];
+//data = [[100, 19, 34, 100],[200, 140, 201, 100], [60,30,4,5]];
+data = [[0.987429, 0.977210, 0.986444, 0, 0.938905, 0, 0.980805, 0.984186], [0.978574, 0.980654, 0.954063, 0, 0.944817, 0, 0.950039, 0.956075], [0.976692, 0.993900, 0.921704, 0, 0.953927, 0, 0.881296, 0.899165],[0.962152, 1.000000, 0.863276, 0, 0.962527, 0, 0.774538, 0.815311]];
+//plottedData = [1,0.9939,0.987429,0.986444];
 //axisLabels = titleName(data,labels);
 
 
 DatasetsInfo = []; //this is populated by the web function
 dalen = data.length;
+axesLables = topX(4);
+//document.write(plottedData);
+//plottedDalen = plottedData.length;
 web(dalen);
 
 var RadarChartConfig = {
     type: 'radar',
     data: {
-	    labels: topX(4),
+	    labels: axesLables,
 	    datasets: DatasetsInfo        
     }
 };	
 
 var myChart = new Chart(ctx, RadarChartConfig);
+
 //document.write(topX(7));
 </script>
 </body>

@@ -5,16 +5,16 @@
     roi = labels[index];
     return dose + " haha" + roi;
 }*/
-/*how to fully copy data array locally (. was getting errors: TempData not defined when did console.log(tempData)  ): https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089*/
 
-/*function topX(x){
+function topX(x){
+/*how to fully copy data array locally (. was getting errors: TempData not defined when did console.log(tempData)  ): https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089*/
   tempData = JSON.parse(JSON.stringify(data));
   //tempData = data;
   titles = [];
   indicies = []
   for(i=0; i < x; i++){
-    rowMaxes = []; //100, 201, 60
-    rowIndicies = []; //0 2 0 - index for the actual number
+    rowMaxes = [];
+    rowIndicies = [];
     for(j=0; j < dalen; j++){
       tempArray = tempData[j];
       maxInSet = Math.max.apply(Math, tempData[j]);
@@ -25,10 +25,10 @@
       //document.write(maxInSet + " " + index + "<br>");
     }
     //document.write(rowMaxes + " " + rowIndicies + "<br>");
-    max = Math.max.apply(Math, rowMaxes); //201
+    max = Math.max.apply(Math, rowMaxes);
     
-    translatingIndex = rowMaxes.indexOf(max); //1 //index of which dataset
-    index = rowIndicies[translatingIndex]; //2
+    translatingIndex = rowMaxes.indexOf(max);
+    index = rowIndicies[translatingIndex];
     //console.log(titles);
     
     roi = labels[index];
@@ -39,7 +39,7 @@
 
   }
   return titles;
-}*/
+}
 
 //generates a random color (used to color each web)
 function dynamicColor(){

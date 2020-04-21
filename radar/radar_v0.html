@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div class="holder">
+	<canvas id="myChart"></canvas>
+</div>
+<script src="radar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script>
+
+var ctx = document.getElementById("myChart");
+
+//variables that will be dynamic later - need to be in this format/data structure for code to work as is.
+
+labels = ["Cord", "Esophagus", "External", "Heart", "PTV", "R_Lung", "R_Lung"];
+data = [[100, 19, 34, 100]];
+//data = [[100, 19, 34, 100],[200, 140, 201], [60,30,4,5]];
+
+//axisLabels = titleName(data,labels);
+
+
+DatasetsInfo = []; //this is populated by the web function
+dalen = data.length;
+web(dalen);
+
+var RadarChartConfig = {
+    type: 'radar',
+    data: {
+	    labels: topX(4),
+	    datasets: DatasetsInfo        
+    }
+};	
+
+var myChart = new Chart(ctx, RadarChartConfig);
+//document.write(topX(7));
+</script>
+</body>
+</html>
