@@ -50,8 +50,22 @@ function dynamicColor(){
   return color;
 }
 
-//for each index in the dataset, the variables for each we are pushed on to an array. This will populate the chart.
 function web(dalen){  
+    number = 1;
+    DatasetsInfo.push(
+        {
+        label: "Plan " + number,
+        data: plottedData,
+        backgroundColor: dynamicColor(),
+        borderWidth: 3
+        }
+      )
+}
+
+
+
+//for each index in the dataset, the variables for each we are pushed on to an array. This will populate the chart.
+/*function web(dalen){  
   for(i=0; i < dalen; i++){
     number = i + 1;
     DatasetsInfo.push(
@@ -63,7 +77,7 @@ function web(dalen){
         }
       )
   }
-}
+}*/
 
 
 //new task: export PYTHON data as JSON file. Have function pull from that.
