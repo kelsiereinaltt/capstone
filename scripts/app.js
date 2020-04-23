@@ -613,15 +613,28 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
         
     }
     console.log(selected_array)
-    
+    max_correlations = [0,0,0,0];
+    axis_lengths = [0,0,0,0];
+    label_coordinates = [[],[],[],[]]; //track the coordinates of the organ name and dose for each axis    
     for(var ioar=0; ioar < number_organs; ioar++) { //for each organ 
         for(var j=0; j < cdvh_array[ioar][iplan].length; j++){ // for each dose level
           for(var iplan=0; iplan < number_plans ; iplan++) { //construct for each plan
-            temp_array = cdvh_array[iplan].push(cdvh_array[organ_index][iplan][j][1])
+            temp_array[iplan].push(cdvh_array[organ_index][iplan][j][1])
           } 
 
           corr = getPearsonCorrelation(temp_array, selected_array);
+          
+          // check if correlation is greater than the smallest value in max_correlations
+          current_min = math.min(max_correlations);
+          if(corr > current_min){
+            var new_index = current_min.indexOf(current_min);
+            max_correlations[new_index].push(corr);
+            var abs_change = math.max(temp_array) - math.min(temp_array); 
+            axis_lengths[new_index].push(abs_change);
+            label_coordinates[new_index].push(ioar,j);
+          }
           console.log("corr:" + corr);
+          console.log(temp_array)
           //findJS function to computer correlation
           //if one of the top 4
           //make axes max - min         
@@ -635,7 +648,7 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
                                   
 }
 
-// return the probability radiation pnuemonitis in percent
+
 function returnPRP(data)
 {
   var con = -2.98;
