@@ -625,11 +625,11 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
           corr = getPearsonCorrelation(temp_array, selected_array);
           
           // check if correlation is greater than the smallest value in max_correlations
-          current_min = math.min(max_correlations);
+          current_min = Math.min(max_correlations);
           if(corr > current_min){
             var new_index = current_min.indexOf(current_min);
             max_correlations[new_index].push(corr);
-            var abs_change = math.max(temp_array) - math.min(temp_array); 
+            var abs_change = Math.max(temp_array) - Math.min(temp_array); 
             axis_lengths[new_index].push(abs_change);
             label_coordinates[new_index].push(ioar,j);
           }
