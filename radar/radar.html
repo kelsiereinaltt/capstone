@@ -14,44 +14,6 @@
 
 var ctx = document.getElementById("myChart");
 
-function topX(x){
-  tempData = JSON.parse(JSON.stringify(data));
-  //tempData = data;
-  titles = [];
-  indicies = [];
-  maxes = [];
-  for(i=0; i < x; i++){
-    rowMaxes = []; //100, 201, 60
-    rowIndicies = []; //0 2 0 - index for the actual number
-    for(j=0; j < dalen; j++){
-      tempArray = tempData[j];
-      maxInSet = Math.max.apply(Math, tempData[j]);
-      rowMaxes.push(maxInSet);
-
-      inSetIndex = tempArray.indexOf(maxInSet);
-      rowIndicies.push(inSetIndex)
-      //document.write(maxInSet + " " + index + "<br>");
-    }
-    //document.write(rowMaxes + " " + rowIndicies + "<br>");
-    max = Math.max.apply(Math, rowMaxes); //201
-    
-    translatingIndex = rowMaxes.indexOf(max); //1 //index of which dataset
-    index = rowIndicies[translatingIndex]; //2
-    doseNum = dose[translatingIndex];
-    
-    roi = labels[index];
-    titles.push(doseNum + " gy " + roi);
-    maxes.push(max);
-
-    identifySet = tempData[translatingIndex];
-    identifySet[index] = max * -1;
-
-  }
-  //document.write(titles)
-  plottedData = maxes;
-
-  return titles;
-}
 //variables that will be dynamic later - need to be in this format/data structure for code to work as is.
 dose = [5.0, 10.0, 15.0, 20.0];
 labels = ["Cord", "Esophagus", "External", "Heart", "Lt_Lung", "PTV", "R_Lung", "Total_Lung_-_gtv"];
@@ -63,7 +25,7 @@ DatasetsInfo = []; //this is populated by the web function
 dalen = data.length;
 axesLables = topX(4);
 plotLen = plottedData.length;
-document.write(plottedData);
+//document.write(plottedData);
 
 web(dalen);
 
