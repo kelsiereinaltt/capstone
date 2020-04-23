@@ -596,6 +596,8 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
     // Kelsie and Dana - here is where we would put the correlation calculation
     // same code as in python, loop over cdvh_array and compute correlation with current selected data
 
+    var bin_size = cdvh_array[0][0].length / 10;
+
     selected_organ = organs[organ_index]
     console.log("Selected organ = ", selected_organ)
     selected_plan = plans[plan_index]
@@ -617,8 +619,8 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
     axis_lengths = [0,0,0,0];
     label_coordinates = [[],[],[],[]]; //track the coordinates of the organ name and dose for each axis    
     for(var ioar=0; ioar < number_organs; ioar++) { //for each organ 
-        for(var j=0; j < cdvh_array[ioar][iplan].length; j++){ // for each dose level
-          for(var iplan=0; iplan < number_plans ; iplan++) { //construct for each plan
+      for(var j=bin_size/2; j < cdvh_array[ioar][iplan].length; j += bin_size){ // for each dose level
+        for(var iplan=0; iplan < number_plans ; iplan++) { //construct for each plan
             temp_array[iplan].push(cdvh_array[organ_index][iplan][j][1])
           } 
 
@@ -633,8 +635,9 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
             axis_lengths[new_index].push(abs_change);
             label_coordinates[new_index].push(ioar,j);
           }
+
           console.log("corr:" + corr);
-          console.log(temp_array)
+          // console.log("current plans" + temp_array)
           //findJS function to computer correlation
           //if one of the top 4
           //make axes max - min         
@@ -644,8 +647,8 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
            //push the data point to a new array
 
         }
-    }
-                                  
+      }
+      console.log('top correlations' + max_correlations)                              
 }
 
 
