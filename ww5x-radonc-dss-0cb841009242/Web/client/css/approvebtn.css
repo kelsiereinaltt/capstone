@@ -1,0 +1,51 @@
+ .approve {
+    backface-visibility: hidden;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    background: #639cff;
+    border-radius: 100px;
+    border: 3px solid #cecece;
+    border-width: 3px 3px 3px 3px;
+    padding: 10px 20px 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Trebuchet MS';
+    font-weight: 900;
+    font-style: normal
+  }
+  .approve:hover{background-color: #3880ff}
+  .approve:active{
+    background-color: #3880ff;
+  }
+  .approve > div {
+    color: #999999;
+    font-size: 20px;
+    font-family: Helvetica Neue;
+    font-weight: initial;
+    font-style: normal;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+  }
+  .approve > i {
+    text-align: center;
+    color: #898989;
+    font-size: 25px;
+    background: #ffffff;
+    border-radius: 100px;
+    border: 0px solid transparent;
+    border-width: 0px 1px 5px 0px;
+    padding: 5px 0px 1px 3px;
+    margin: 3px 3px 3px 10px;
+    position: absolute;
+    top: 0px;
+    left: px;
+    bottom: 0px;
+    right: 0px;
+    width: 45px;
+    height: 22px
+  }
+  .approve > .ld {
+    font-size: initial
+  }

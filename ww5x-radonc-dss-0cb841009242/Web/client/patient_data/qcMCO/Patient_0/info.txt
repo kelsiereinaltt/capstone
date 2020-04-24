@@ -1,0 +1,4 @@
+Name; MRN ; BD ; Gender ; fraction pattern; Technique; delivered fx; planned fx; delivered dose; planned dose; start date; end date; total days; Description
+
+
+Patient 0; 12977 ; 1954-07-19 00:00:00 ; Female ; ; 3D Conformal ; 20 ; 20 ; 4000 ; 4000 ; 2013-04-01 00:00:00 ; 2013-04-26 00:00:00 ; 25; The patient is a 58 y.o. woman with left sided limited stage small cell undifferentiated lung carcinoma
