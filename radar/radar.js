@@ -33,6 +33,7 @@ function topX(x){
   }
   //document.write(titles)
   plottedData = maxes;
+  console.log("plotted data:" + plottedData)
 
   return titles;
 }
