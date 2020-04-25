@@ -619,7 +619,7 @@ function compute_correlations(organ_index, plan_index, selected_point, cdvh_arra
         
     }
     console.log(selected_array)
-    max_correlations = [0,0.01,0.001];
+    max_correlations = [0,0,0,0,0];
     axis_lengths = [];
     dose_labels = []; //track the coordinates of the organ name and dose for each axis   
     organ_labels = [];
@@ -672,9 +672,9 @@ function initialize_radar() {
   radarChart = new Chart(ctx,{
     type: 'radar',
     data: {
-        labels: ['Selected Organ', 'Organ 2', 'Organ 3', 'Organ 4'],
+        labels: ['Selected Organ', 'Organ 2', 'Organ 3', 'Organ 4','Organ 5','Organ 6'],
         datasets: [{
-            data: [0,0,0,0],
+            data: [0,0,0,0,0,0],
             backgroundColor: 'rgba(100,120,175,0.5)',
             borderWidth: 1
         }]
